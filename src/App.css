@@ -1,0 +1,273 @@
+:root{
+  --primary-color:  #b584ff;
+  --lower-color: #F05C5C;
+  --higher-color: #49B966;
+  --background-color: #ece4ff;
+  --poster-background: #D2C5F6;
+}
+
+.heading-big{
+  padding-top: 30px;
+  font-size: 3.5rem;
+  font-weight: 800;
+}
+
+body{
+  /* background: var(--background-color); */
+  background-image: url('../public/bgimage.png');
+  background-size: cover;
+  background-position: center;
+
+  font-family: "Jersey 15", sans-serif;
+}
+
+.hero{
+  min-height: 100vh;
+  width: 100%;
+  padding: 2vh 0 ;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  
+}
+
+.poster--container{
+  width: 100%;
+  height: auto;
+  margin: 2vh 0;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 2rem;
+}
+
+.poster--left, .poster--right{
+  height: 60vh;
+  width: 25vw;
+  background: var(--poster-background);
+  min-width: 280px;
+  cursor: pointer;
+  border-radius: 32px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  position: relative;
+  overflow: hidden;
+  border: 5px solid black;
+}
+
+.skeleton--loading{
+  animation: skeleton-animation 1.8s infinite linear;
+}
+
+@keyframes skeleton-animation {
+  0%{
+    background-color: #D2C5F6;
+  }
+
+  50%{
+    background-color: #b9a6d4;  
+  }
+
+  100%{
+    background-color: #D2C5F6;
+  }
+}
+
+.poster--left:hover, .poster--right:hover{
+  box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+
+.poster--left img, .poster--right img{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 0px;
+  background-color: var(--primary-color);
+  transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+}
+
+.poster--left:hover img, .poster--right:hover img{
+  transform: scale(1.07);
+  filter: blur(1px) brightness(40%);
+}
+
+.score-button, .retry-button{
+  height: 70px;
+  width: 70px;
+  border-radius: 50%;
+  border: none;
+  margin: 0 1rem;
+  background: var(--primary-color);
+  font-size: 20px;
+  border: 2px solid black;
+}
+
+.button--container {
+  padding-bottom: 25px;
+}
+
+.retry-button{
+  transition: background-color 0.3s ease;
+  transition: 0.3s ease;
+  font-size: 2rem;
+}
+
+.retry-button:hover{
+  background-color: #000000;
+  -webkit-text-fill-color: white;
+
+}
+
+.score-button{
+  width: fit-content;
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.retry-button{
+  cursor: pointer;
+}
+
+.display-on-hover{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0; 
+  color: white;
+  font-size: 2rem;
+  padding: 0.4rem;
+  text-align: center;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: none;
+}
+
+.poster--left:hover .display-on-hover, .poster--right:hover .display-on-hover{
+  display: flex;
+}
+
+.display-none{
+  display: none;
+}
+
+.rating{
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: white;
+  font-family: 'Courier New', Courier, monospace;
+  text-align: center;
+  font-size: 1.7rem;
+  padding: 1rem;
+  word-wrap: break-word;
+
+  z-index: 99999;
+}
+
+.red-bg{
+  background-color: var(--lower-color);
+}
+
+.green-bg{
+  background-color: var(--higher-color);
+
+}
+
+.display{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0; 
+  color: white;
+  
+  font-size: 1.3rem;
+  padding: 0.4rem;
+  text-align: center;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media screen and (max-width: 600px) {
+  .heading-big{
+    font-size: 2.5rem;
+  }
+
+  .hero{
+    min-height: 85vh;
+  }
+  
+  .poster--container{
+    gap: 0;
+  }
+
+  .poster--left, .poster--right{
+    min-width: 48vw;
+    height: 50vh;
+  }
+ 
+  .poster--left img, .poster--right img{
+    filter: blur(1px) brightness(40%);
+  }
+}
+
+@media screen and (max-width: 400px) {
+  
+  .poster--left, .poster--right{
+    height: 40vh;
+  }
+
+}
+
+.fade-anim {
+  animation: fade--anim 1.2s ease-in-out 0s forwards;
+}
+
+@keyframes fade--anim {
+  0%{
+    opacity: 0;
+  }
+
+  100%{
+    opacity: 1;
+  }
+}
+
+.fade-out{
+  animation: fade--out 0.7s ease-in-out 0s forwards;
+}
+
+@keyframes fade--out {
+  0%{
+    opacity: 1;
+  }
+
+  100%{
+    opacity: 0;
+    display: none;
+  }
+}
+
+.rating-anim{
+  animation: rate--anim 10s ease-in-out 0s forwards;
+}
+
+@keyframes rate--anim {
+  0%{
+    opacity: 0;
+  }
+
+  100%{
+    opacity: 1;
+    display: none;
+  }
+}
